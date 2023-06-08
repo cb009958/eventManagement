@@ -33,6 +33,12 @@ Route::get('event/{id}', function ($id) {
 
 -> name('event.show');
 
+Route::get('reserve/{id}', function($id){
+    return view('event.reservation',[
+        'reserve' => $id
+    ]);
+})->name('event.reservation');
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
