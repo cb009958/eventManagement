@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +24,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('event/{id}', function ($id) {
+    return view('event.show',[
+        'event' => $id
+    ]);
+})
+
+-> name('event.show');
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
