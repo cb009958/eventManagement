@@ -9,14 +9,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +30,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+
+        //profile
+        'first_name',
+        'last_name',
+        'phone',
+        'address',
+        'country',
+        'city',
+        'state_province',
+        'zip_code',
+
+        'card_number,'
     ];
 
     /**
@@ -48,6 +64,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'temp' =>'float'
     ];
 
     /**
@@ -58,4 +75,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
 }

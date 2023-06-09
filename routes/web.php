@@ -21,6 +21,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
+        dd(\App\Enums\UserRole::User);
+        dd(auth()->user()->temp);
         return view('dashboard');
     })->name('dashboard');
 });
