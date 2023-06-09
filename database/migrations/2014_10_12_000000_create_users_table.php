@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
 
             $table
-                ->tinyInteger('role')
-                ->default(\App\Enums\UserRole::User->value);
+                ->tinyInteger('role')->default(\App\Enums\UserRole::User->value);
 
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
@@ -30,12 +29,7 @@ return new class extends Migration
             $table->string('zip_code',10)->nullable();
 
             $table->string('card_number')->nullable();
-        
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+    
             $table->timestamps();
         });
     }

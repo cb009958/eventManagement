@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreginId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table
+                ->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
+
             $table->string('name');
             $table->text('description');
 

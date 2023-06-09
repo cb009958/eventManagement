@@ -64,7 +64,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'temp' =>'float'
+        'role' => \App\Enums\UserRole::class,
     ];
 
     /**
